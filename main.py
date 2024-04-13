@@ -10,6 +10,11 @@ def print_menu():
     selection = int(input("Please enter an option: "))
     return selection
 
+def decode(password):
+    decodedDigits = [str(int(digit) - 3) for digit in password if digit.isdigit()]
+    decodedPassword = ''.join(decodedDigits)
+    return decodedPassword
+
 def main():
     while True:
         selection = print_menu()
@@ -18,7 +23,9 @@ def main():
             encodedPass = encode(password)
             print("Your password has been encoded and stored!")
         elif selection == 2:
-            break
+            decodedPass = decode(encodedPass)
+            print("The encoded password is " + encodedPass +
+                  ", and the origonal password is " + decodedPass + ".")
         elif selection == 3:
             break
         else:
